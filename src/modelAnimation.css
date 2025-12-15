@@ -1,0 +1,33 @@
+#root {
+  width: 100vw;
+  height: 100vh;
+}
+
+.canvas {
+  position: fixed!important;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+}
+
+.interface {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: auto;
+}
+
+.section {
+  height: 100vh;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 50px;
+  font-size: 30px;
+}
+
+.section:nth-child(even) {
+  align-items: end;
+}
