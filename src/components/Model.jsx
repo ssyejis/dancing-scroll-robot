@@ -14,9 +14,6 @@ export function Model(props) {
   const { nodes, materials, animations, gltf } = useGLTF('models/robot-draco.glb');
   const { actions, clips  } = useAnimations(animations, group);
 
-  // useEffect 두개 중 첫번째꺼는 스크롤 이벤트 없이 바로 애니메이션이 동작하는 것, 두번째는 스크롤양에따라 에니메이션을 1frame 단위로 나눠 움직이게끔함.
-  // 원하는걸 사용 
-
 	// useEffect(() => {
   //   // actions을 콘솔로 찍으면 이 모델에 해당하는 액션들이 나옴, 그 중 원하는 액션 정해서 아래 형식으로 배열 인덱스값 변경
   //   actions[animations[3].name].reset().play();
@@ -30,17 +27,13 @@ export function Model(props) {
 	// });
 
   useEffect(() => {
-    // clips[0] 액션을 사용하며 해당 액션을 group.current에 바인딩
     const action = mixer.clipAction(clips[0], group.current);
-    // action을 실행하여 애니메이션 시작
     action.play();
     action.clampWhenFinished = true;
 
-    // mixer가 모든 액션을 중지하도록 함.
     return () => mixer.stopAllAction();
   }, [clips, mixer]);
 
-  // 매 프레임마다 실행되는 함수
   useFrame((_, delta) => {
     if (!clips[0]) return
     

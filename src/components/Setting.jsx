@@ -15,11 +15,9 @@ export const Setting = (props) => {
 
 	
   	useEffect(() => {
-		// model와 model그림자의 포지션 이동을 위해서 model+그림자를 그룹으로 묶어 그룹 전체를 포지션 이동
 		gsap.to(group.current.position, {
 			y: -3,
 			scrollTrigger: {
-				// interface 영역이 전체 길이를 차지하기때문에 interface 길이에 맞춰 스크롤 애니메이션 진행함.
 				trigger: '.interface',
 				start: 'top top',
 				end: '70% top',
@@ -27,7 +25,6 @@ export const Setting = (props) => {
 			}
 		})
 
-		// 스크롤양에따라 rotation을 주는 함수 
 		gsap.to(model.current.rotation, {
 			y: -Math.PI*2,
 			scrollTrigger: {
@@ -41,7 +38,6 @@ export const Setting = (props) => {
 
 	return (
 		<>
-			{/* 카메라가 연속적으로 살짝 움직이게 하는 기능 maxYaw, maxPitch, maxRoll 값에 따라 카메라의 움직임 범위가 달라짐 */}
 			<CameraShake
 				maxYaw={0.01}
 				maxPitch={0.01}
@@ -58,7 +54,7 @@ export const Setting = (props) => {
 				<group ref={model}>
 					<Model scrollY={scrollY} />
 				</group>
-      	<ContactShadows positionY={-1} opacity={0.42} scale={10} blur={1} far={10} resolution={256} color="#000000" />
+      			<ContactShadows positionY={-1} opacity={0.42} scale={10} blur={1} far={10} resolution={256} color="#000000" />
 			</group>
 		</>
 	)

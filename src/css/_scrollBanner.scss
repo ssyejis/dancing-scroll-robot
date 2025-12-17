@@ -1,0 +1,57 @@
+.banner {
+	margin: 40px 0;
+	height: 500vh;
+	position: relative;
+
+	h1 {
+		color: #fff;
+		padding-left: 20px;
+	}
+
+	&_inner {
+		position: sticky;
+		top: 66px;
+		width: 100%;
+		height: 600px;
+	}
+
+	&_text {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		z-index: 1;
+		width: 100%;
+		min-height: 230px;
+		text-align: center;
+
+		ul {
+			display: flex;
+			align-items: start;
+			li {
+				flex: 1;
+				list-style-type: none;
+
+				p { font-size: 36px; margin-bottom: 10px; }
+				.banner_detail { font-size: 26px; max-height: 0px; overflow: hidden; }
+			}
+		}
+	}
+
+	&_item {
+		position: absolute;
+		width: 100%;
+		height: 600px;
+		overflow: hidden;
+		top: 50%;
+		transform: translateY(-50%);
+		left: 0;
+
+		img {
+			width: 100%;
+		}
+		&:not(:first-child) {
+			opacity: 0;
+		}
+	}
+}
